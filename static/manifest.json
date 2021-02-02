@@ -15,5 +15,9 @@
   "options_ui": {
     "page": "./src/options.html",
     "open_in_tab": true
+  },
+  "browser_action": {
+    "default_title": "Dash",
+    "default_popup": "./src/popup.html"
   }
 }

@@ -1,13 +1,13 @@
-import { h, render, Component } from "preact";
+import { render } from "preact";
 // import "tailwindcss/tailwind.css"; // TODO - Get this to work instead of using style.css
 import "../style.css";
 
-let Header = () => {
+let Popup = () => {
   return (
-    <header class="h-24 bg-blue-200">This page is yet to be implemented</header>
+    <div class="popup-container bg-gray-50">This is the popup</div>
   )
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  render(<Header />, document.body);
+  render(<Popup />, document.body);
 });
