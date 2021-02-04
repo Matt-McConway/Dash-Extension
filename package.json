@@ -5,7 +5,10 @@
   "scripts": {
     "clear": "rd /s /q dist .parcel-cache",
     "watch": "yarn clear && parcel watch src/{main.html,options.html,popup.html,background.js} --dist-dir dist/src --public-url ./ -t node --bundle-node-modules",
-    "build": "yarn clear && parcel build src/{main.html,options.html,popup.html,background.js} --dist-dir dist/src --public-url ./"
+    "build": "yarn clear && parcel build src/{main.html,options.html,popup.html,background.js} --dist-dir dist/src --public-url ./",
+    "c": "rm -rf dist .parcel-cache",
+    "w": "yarn c && parcel watch src/{main.html,options.html,popup.html,background.js} --dist-dir dist/src --public-url ./ -t node --bundle-node-modules",
+    "b": "yarn c && parcel build src/{main.html,options.html,popup.html,background.js} --dist-dir dist/src --public-url ./"
   },
   "volta": {
     "node": "14.15.4",
