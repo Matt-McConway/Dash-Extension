@@ -5,7 +5,15 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      flexGrow: {
+        '3': '3',
+        '6': '6',
+      },
+      colors: {
+        primary: '#FA5E30'
+      }
+    },
   },
   variants: {
     extend: {},
