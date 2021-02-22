@@ -36,7 +36,7 @@ let Popup = () => {
     <div class="popup-container bg-gray-50 antialiased text-gray-900">
       <Header />
       {loading && <div class="flex flex-col justify-center items-center w-full h-full"><span>Loading...</span></div>}
-      {data && <div class="grid grid-cols-2 gap-2 p-2">
+      {data && <div class="grid grid-cols-3 gap-2 p-2">
         {data.List.map(listing => <Listing listing={listing}/>)}
       </div>}
     </div>
