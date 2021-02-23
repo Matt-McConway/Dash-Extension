@@ -1,51 +1,76 @@
 import { render } from "preact";
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useReducer, useState } from 'preact/hooks';
 // import "tailwindcss/tailwind.css"; // TODO - Get this to work instead of using style.css
 import "../style.css";
 import { Header } from "./Header";
 import { Listing } from "./Listing";
 
-const useOneDollarApi = (initialState) => {
-  const [data, setData] = useState(initialState);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+const fetchReducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_INIT":
+      return {
+        ...state,
+        loading: true,
+        error: false
+      };
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.payload
+      };
+    case "FETCH_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true
+      };
+    default:
+      throw new Error();
+  }
+};
+
+const useFetch = (url, requestOptions, initialData) => {
+  const [state, dispatch] = useReducer(fetchReducer, {
+    loading: false,
+    error: false,
+    data: initialData
+  });
 
   useEffect(() => {
-    setLoading(true);
-    setError(false);
+    let isMounted = true;
+    dispatch({ type: "FETCH_INIT" });
 
-    fetch(`${process.env.API_URL}/Listings/oneDollar.json?photo_size=Gallery`, {
-      method: "get",
-      headers: {
-        "Authorization": `OAuth oauth_consumer_key=${process.env.OAUTH_CONSUMER_KEY}, oauth_signature_method=PLAINTEXT, oauth_signature=${process.env.OAUTH_SIGNATURE}&`
-      }
-    }).then(response => {
+    fetch(url, requestOptions).then(response => {
       if (response.status === 200) {
         return Promise.resolve(response.json());
       } else {
         return Promise.reject(new Error(response.statusText));
       }
     }).then(data => {
-      setData(data);
-      setLoading(false);
+      isMounted && dispatch({type: "FETCH_SUCCESS", payload: data});
     }).catch(error => {
       console.error("Request failed: ", error);
-      setLoading(false);
-      setError(true);
+      isMounted && dispatch({type: "FETCH_FAILURE"});
     });
+
     return () => {
-      setData(initialState);
-      setLoading(false);
-      setError(false);
+      isMounted = false;
     }
   }, []);
 
-  return [{data, loading, error}];
+  return [state];
 }
 
 const Popup = () => {
   
-  const [{data, loading, error}] = useOneDollarApi({List: []});
+  const [{data, loading, error}] = useFetch(`${process.env.API_URL}/Listings/oneDollar.json?photo_size=Gallery`, {
+    method: "get",
+    headers: {
+      "Authorization": `OAuth oauth_consumer_key=${process.env.OAUTH_CONSUMER_KEY}, oauth_signature_method=PLAINTEXT, oauth_signature=${process.env.OAUTH_SIGNATURE}&`
+    }
+  } ,{List: []});
 
   return (
     <div class="popup-container bg-gray-50 antialiased text-gray-900">
