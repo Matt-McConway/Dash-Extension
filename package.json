@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "license": "NONE",
   "scripts": {
-    "clear": "rd /s /q dist .parcel-cache",
-    "c": "rm -rf dist .parcel-cache",
     "start": "parcel src/manifest.json --host localhost --target dev",
     "build": "parcel build src/manifest.json --target prod"
   },
