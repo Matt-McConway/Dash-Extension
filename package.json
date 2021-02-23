@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "license": "NONE",
   "scripts": {
-    "clear": "rd /s /q dist .parcel-cache",
-    "watch": "yarn clear && parcel watch src/{main.html,options.html,background.js} --dist-dir dist/src --public-url ./ -t node --bundle-node-modules",
-    "build": "yarn clear && parcel build src/{main.html,options.html,background.js} --dist-dir dist/src --public-url ./"
+    "start": "parcel src/manifest.json --host localhost --target dev",
+    "build": "parcel build src/manifest.json --target prod"
   },
   "volta": {
     "node": "14.15.4",
@@ -13,6 +12,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@parcel/config-webextension": "^2.0.0-nightly.2151",
     "autoprefixer": "^10.2.4",
     "parcel": "^2.0.0-nightly.558",
     "parcel-reporter-static-files-copy": "^1.1.1",
@@ -27,5 +27,14 @@
     "react": "preact/compat",
     "react-dom/test-utils": "preact/test-utils",
     "react-dom": "preact/compat"
+  },
+  "targets": {
+    "dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    },
+    "prod": {}
   }
 }
