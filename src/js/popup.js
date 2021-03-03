@@ -1,5 +1,6 @@
 import { render } from "preact";
-import { useEffect, useReducer, useState } from 'preact/hooks';
+import { useEffect, useReducer } from 'preact/hooks';
+import { useDarkMode } from './useDarkMode';
 // import "tailwindcss/tailwind.css"; // TODO - Get this to work instead of using style.css
 import "../style.css";
 import { Header } from "./Header";
@@ -64,6 +65,7 @@ const useFetch = (url, requestOptions, initialData) => {
 }
 
 const Popup = () => {
+  useDarkMode();
   
   const [{data, loading, error}] = useFetch(`${process.env.API_URL}/Listings/oneDollar.json?photo_size=Gallery`, {
     method: "get",

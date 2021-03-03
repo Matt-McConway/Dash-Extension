@@ -1,35 +1,33 @@
 import { render } from "preact";
-import { useState, useEffect } from 'preact/hooks';
+import { useSettingsStore } from "./useSettingsStore";
+import { useDarkMode } from "./useDarkMode";
 // import "tailwindcss/tailwind.css"; // TODO - Get this to work instead of using style.css
 import "../style.css";
 
-
-// TODO 'useChromeStorage' custom hook for acessing and setting storage
-
 const Options = () => {
-  const [toggleActive, setToggleActive] = useState();
-  useEffect(() => {
-    chrome.storage.local.get("darkMode", (result) => {
-      setToggleActive(result.darkMode || false);
-    });
-  }, [])
+  const [settings, setSettings, isPersistent, error] = useSettingsStore();
+  useDarkMode();
 
-  const setDarkMode = () => {
-    chrome.storage.local.set({darkMode: !toggleActive}, () => {
-      setToggleActive(!toggleActive);
-    })
-  }
-  return (
-    <div class="bg-gray-50 antialiased text-gray-900">
+  const handleChange = (key, value) => {
+    setSettings(prevState => {
+      return {
+        ...prevState,
+        [key]: value
+      };
+    });
+  };
+
+  return isPersistent && !error && (
+    <div class="bg-gray-50 w-full h-full antialiased text-gray-900">
       <header class="p-4 flex flex-row items-stretch justify-between bg-gray-100 shadow">
         <div class="h-24 w-24 rounded-full bg-primary flex items-center justify-center text-white font-bold text-4xl">D</div>
         <h1 class="flex-grow-6 inline-block text-2xl font-medium self-center pl-2">Dash Settings</h1>
       </header>
       <div class="bg-blue-100 rounded-lg p-4 m-4">
-        <h2 class="font-medium underline uppercase">
+        <h2 class="font-medium underline uppercase text-lg">
           This extension is still in development
         </h2>
-        <span>Have an idea around how I can improve this extension? I welcome any suggestions and bug reports!</span>
+        <span class="text-base">Have an idea around how I can improve this extension? I welcome any suggestions and bug reports!</span>
         <div class="w-40">
           <a href="mailto:matt@mcconway.nz?subject=Dash - Suggestion/Bug Report">
             <div class="rounded-full bg-primary py-2 px-4 text-white font-medium mt-2 flex flex-row items-center justify-center">
@@ -48,10 +46,10 @@ const Options = () => {
         <h2 class="text-xl font-medium">Appearance</h2>
         <ul class="bg-white shadow py-4 px-10 mt-2 rounded-lg">
           <li>
-            <div class="flex flex-row items-center justify-between font-medium p-4" onClick={setDarkMode}>
+            <div class="flex flex-row items-center justify-between font-medium p-4 text-base" onClick={() => handleChange("darkMode", !settings.darkMode)}>
               Enable Dark Mode
-              <div class={`w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out ${toggleActive && 'bg-primary'}`}>
-                <div class={`bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out ${toggleActive && 'translate-x-6'}`}></div>
+              <div class={`w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out ${settings.darkMode && 'bg-primary'}`}>
+                <div class={`bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out ${settings.darkMode && 'translate-x-6'}`}></div>
               </div>
             </div>
           </li>
