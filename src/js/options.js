@@ -18,12 +18,12 @@ const Options = () => {
   };
 
   return isPersistent && !error && (
-    <div class="bg-gray-50 w-full h-full antialiased text-gray-900">
-      <header class="p-4 flex flex-row items-stretch justify-between bg-gray-100 shadow">
+    <div class="bg-gray-50 min-h-screen antialiased text-gray-900 dark:bg-gray-600 transition-all duration-300 ease-in-out">
+      <header class="p-4 flex flex-row items-stretch justify-between bg-gray-100 dark:bg-gray-700 shadow">
         <div class="h-24 w-24 rounded-full bg-primary flex items-center justify-center text-white font-bold text-4xl">D</div>
-        <h1 class="flex-grow-6 inline-block text-2xl font-medium self-center pl-2">Dash Settings</h1>
+        <h1 class="flex-grow-6 inline-block text-2xl font-medium self-center pl-2 dark:text-gray-300">Dash Settings</h1>
       </header>
-      <div class="bg-blue-100 rounded-lg p-4 m-4">
+      <div class="bg-blue-300 rounded-lg p-4 m-4 dark:bg-blue-900 dark:text-gray-300 shadow">
         <h2 class="font-medium underline uppercase text-lg">
           This extension is still in development
         </h2>
@@ -42,9 +42,9 @@ const Options = () => {
           </a>
         </div>
       </div>
-      <div class="px-4">
+      <div class="px-4 dark:text-gray-300">
         <h2 class="text-xl font-medium">Appearance</h2>
-        <ul class="bg-white shadow py-4 px-10 mt-2 rounded-lg">
+        <ul class="bg-white shadow py-4 px-10 mt-2 rounded-lg dark:bg-gray-700">
           <li>
             <div class="flex flex-row items-center justify-between font-medium p-4 text-base" onClick={() => handleChange("darkMode", !settings.darkMode)}>
               Enable Dark Mode
