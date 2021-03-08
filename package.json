@@ -1,7 +1,8 @@
 {
   "name": "dash",
   "version": "0.0.1",
-  "license": "NONE",
+  "description": "Dash is a helpful browser extension that enhances your experience with Trade Me",
+  "license": "MIT",
   "scripts": {
     "start": "parcel src/manifest.json --host localhost --target dev",
     "build": "parcel build src/manifest.json --target prod"
