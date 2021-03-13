@@ -1,3 +1,6 @@
 module.exports = {
-  "extends": ["preact", "prettier"],
-}
+  env: {
+    webextensions: true,
+  },
+  extends: ["preact", "prettier"],
+};
