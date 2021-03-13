@@ -1,6 +1,5 @@
 <!-- Elaborate template from: https://github.com/othneildrew/Best-README-Template -->
 
-
 <!-- PROJECT HEADER -->
 <br />
 <p align="center">
@@ -22,7 +21,6 @@
     <a href="https://github.com/Matt-McConway/Dash-Extension/issues">Report Bug 🐛</a>
   </p>
 </p>
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -49,40 +47,36 @@
   </ol>
 </details>
 
-
 ## About The Project
 
 <!-- Screenshot to come [![Screenshot of Dash][dash-screenshot]](link to listing on chrome store) -->
+
 I love browsing TradeMe's One Dollar Listings, and I wanted a way to do that with a little less friction. So I created Dash, a browser extension that provides quick and easy access to those listings no matter what web page you're on.
 
 I also took this project as an opportunity to build on my react and web dev skills, and learn new things such as:
 
-* Publishing/Owning/managing a product
-* Project configuration & architecture/structure
-* Intentional/minimal inclusion of dependencies
-* Accessibility
-* OAuth flow
-* Building reusable hooks
-* Unit tests
-* Tailwind CSS
-* Typescript
-
+- Publishing/Owning/managing a product
+- Project configuration & architecture/structure
+- Intentional/minimal inclusion of dependencies
+- Accessibility
+- OAuth flow
+- Building reusable hooks
+- Unit tests
+- Tailwind CSS
+- Typescript
 
 ### Built With
 
-* [Preact](https://preactjs.com/)
-* [TailwindCSS](https://tailwindcss.com/)
-
+- [Preact](https://preactjs.com/)
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Getting Started
 
 The following will get you set up to work on the project:
 
-
 ### Prerequisites
 
 I use [Volta](https://volta.sh/) to pin versions of node/yarn to ensure consistency between environments.
-
 
 ### Installation
 
@@ -94,33 +88,35 @@ I use [Volta](https://volta.sh/) to pin versions of node/yarn to ensure consiste
 3. Register a test application for [TradeMe Sandbox](https://developer.trademe.co.nz/api-overview/registering-an-application/)
 4. Enter your API details in a `.env` file at the root of the project - see `sample.env` for an example.
 
-
 ## Usage
 
 There are a couple of scripts included in the project
 
-
 ### Start
+
 To run a local dev server that watches your code for hot reload thanks to this Parcel [config](https://www.npmjs.com/package/@parcel/config-webextension)
+
 ```sh
   yarn start
 ```
+
 And add the unpacked extension from the `dist` folder [here](chrome://extensions/)
 
 ### Build
+
 To build for production run:
+
 ```sh
   yarn build
 ```
-You can then pack the extension that was built in `dist/prod`
 
+You can then pack the extension that was built in `dist/prod`
 
 ## Roadmap
 
 Using this [Github Project](https://github.com/Matt-McConway/Dash-Extension/projects/1) as a Kanban board / roadmap
 
 You can also take a look at the [open issues](https://github.com/Matt-McConway/Dash-Extension/issues).
-
 
 ## Contributing
 
@@ -132,11 +128,9 @@ Have an idea to improve the project? Any contributions you make are **greatly** 
 4. Push your changes
 5. Open a pull request here, and I'll take a look 😁
 
-
 ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
-
 
 ## Contact
 
@@ -144,7 +138,7 @@ Matt McConway - [@MatthewMcConway](https://twitter.com/MatthewMcConway) - matt@m
 
 Project Link: [https://github.com/Matt-McConway/Dash-Extension](https://github.com/Matt-McConway/Dash-Extension)
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [dash-screenshot]: docs/images/screenshot.png
