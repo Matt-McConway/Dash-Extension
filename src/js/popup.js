@@ -66,17 +66,20 @@ const useFetch = (url, requestOptions, initialData) => {
   return [state];
 };
 
+const oneDollarListingsUrl = `${process.env.API_URL}/Listings/oneDollar.json?photo_size=Gallery`;
+const oneDollarListingsRequestOptions = {
+  method: "get",
+  headers: {
+    Authorization: `OAuth oauth_consumer_key=${process.env.OAUTH_CONSUMER_KEY}, oauth_signature_method=PLAINTEXT, oauth_signature=${process.env.OAUTH_SIGNATURE}&`,
+  },
+};
+
 const Popup = () => {
   useDarkMode();
 
   const [{ data, loading, error }] = useFetch(
-    `${process.env.API_URL}/Listings/oneDollar.json?photo_size=Gallery`,
-    {
-      method: "get",
-      headers: {
-        Authorization: `OAuth oauth_consumer_key=${process.env.OAUTH_CONSUMER_KEY}, oauth_signature_method=PLAINTEXT, oauth_signature=${process.env.OAUTH_SIGNATURE}&`,
-      },
-    },
+    oneDollarListingsUrl,
+    oneDollarListingsRequestOptions,
     { List: [] }
   );
 
