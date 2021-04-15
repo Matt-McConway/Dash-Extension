@@ -1,8 +1,11 @@
-import {createChromeStorageStateHookLocal} from "use-chrome-storage";
+import { createChromeStorageStateHookLocal } from "use-chrome-storage";
 
 const SETTINGS_KEY = "settings";
 const INITIAL_VALUE = {
-  darkMode: false
+  darkMode: false,
 };
 
-export const useSettingsStore = createChromeStorageStateHookLocal(SETTINGS_KEY, INITIAL_VALUE);
+export const useSettingsStore = createChromeStorageStateHookLocal(
+  SETTINGS_KEY,
+  INITIAL_VALUE
+);
